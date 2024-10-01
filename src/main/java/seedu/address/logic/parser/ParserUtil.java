@@ -123,6 +123,11 @@ public class ParserUtil {
         return tagSet;
     }
 
+    /**
+     * Parses a {@code String remark} into an {@code Remark}.
+     * Leading and trailing whitespaces will be trimmed.
+     *
+     */
     public static Remark parseRemark(String remark) {
         requireNonNull(remark);
         String trimmedRemark = remark.trim();

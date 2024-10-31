@@ -6,7 +6,7 @@ title: User Guide
 AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized for use via a Command Line Interface** (CLI) while still having the benefits of a Graphical User Interface (GUI). If you can type fast, AB3 can get your contact management tasks done faster than traditional GUI apps.
 
 * Table of Contents
-{:toc}
+  {:toc}
 
 --------------------------------------------------------------------------------------------------------------------
 
@@ -25,15 +25,15 @@ AddressBook Level 3 (AB3) is a **desktop app for managing contacts, optimized fo
 1. Type the command in the command box and press Enter to execute it. e.g. typing **`help`** and pressing Enter will open the help window.<br>
    Some example commands you can try:
 
-   * `list` : Lists all contacts.
+    * `list` : Lists all contacts.
 
-   * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
+    * `add n/John Doe p/98765432 e/johnd@example.com a/John street, block 123, #01-01` : Adds a contact named `John Doe` to the Address Book.
 
-   * `delete 3` : Deletes the 3rd contact shown in the current list.
+    * `delete 3` : Deletes the 3rd contact shown in the current list.
 
-   * `clear` : Deletes all contacts.
+    * `clear` : Deletes all contacts.
 
-   * `exit` : Exits the app.
+    * `exit` : Exits the app.
 
 1. Refer to the [Features](#features) below for details of each command.
 
@@ -104,7 +104,7 @@ Format: `edit INDEX [n/NAME] [p/PHONE] [e/EMAIL] [a/ADDRESS] [t/TAG]…​`
 * Existing values will be updated to the input values.
 * When editing tags, the existing tags of the person will be removed i.e adding of tags is not cumulative.
 * You can remove all the person’s tags by typing `t/` without
-    specifying any tags after it.
+  specifying any tags after it.
 
 Examples:
 *  `edit 1 p/91234567 e/johndoe@example.com` Edits the phone number and email address of the 1st person to be `91234567` and `johndoe@example.com` respectively.
@@ -143,11 +143,35 @@ Examples:
 * `find Betsy` followed by `delete 1` deletes the 1st person in the results of the `find` command.
 * `delete 1 3 5-7` deletes the 1st, 3rd, 5th, 6th and 7th person in the displayed list.
 
-### Clearing all entries : `clear`
+### Clearing listed persons : `clear`
 
-Clears all entries from the address book.
+Clears current listed persons from the address book.
 
-Format: `clear`
+Format: `clear` and then `confirm`
+
+* `clear` prompts user for confirmation to clear. To confirm clearing, type `confirm`.
+* Clearing a filtered list of persons will clear only those filtered persons from the address book.
+* To clear the entire address book, ensure the persons list is unfiltered.
+
+Examples:
+* `list` followed by `clear` then `confirm` clears the entire address book.
+* `find g/f` followed by `clear` then `confirm` clears only female persons.
+
+### Exporting persons' emails : `export`
+
+Exports the current listed persons' emails to a txt file.
+
+Format: `export FILENAME`
+
+* Exports the current listed persons' emails to a txt file with the specified filename
+* Filepath can be specified by the user.
+* `FILENAME` should only have alphanumeric characters, `_` and `/`.
+* If the specified file already exists, a copy will be created for the new export.
+
+Examples:
+* `export data/MyEmailsList` exports current listed persons' emails to `MyEmailsList.txt` in the `data` directory.
+* `find g/f` followed by `export female_emails` exports only the emails of female persons.
+* If `MyExport.txt` already exists, `export MyExport` exports the emails to `MyExport(1).txt`.
 
 ### Exiting the program : `exit`
 
